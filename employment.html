@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TKLS Employment Status Analysis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F1FAEE;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 384px;
+            }
+        }
+        .stat-card {
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            padding: 1.5rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="text-[#1D3557]">
+
+    <header class="bg-[#457B9D] text-white p-8 text-center rounded-b-xl shadow-lg">
+        <h1 class="text-4xl md:text-5xl font-bold mb-2">TKLS Employment Status Analysis</h1>
+        <p class="text-lg text-[#A8DADC]">An Infographic on Employment Trends</p>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <section id="overview" class="mb-12">
+            <h2 class="text-3xl font-bold text-center mb-2">Employment Status Distribution</h2>
+            <p class="text-center text-lg text-gray-600 max-w-3xl mx-auto mb-8">The vast majority of the population is identified as a student, followed by employed and self-employed individuals. Other categories, such as retired and unemployed, make up a very small percentage.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="stat-card border-l-8 border-[#F28F3B]">
+                    <p class="text-5xl font-bold text-[#F28F3B]">73.2%</p>
+                    <p class="text-xl text-gray-700 mt-2">Students</p>
+                </div>
+                <div class="stat-card border-l-8 border-[#00A6A6]">
+                    <p class="text-5xl font-bold text-[#00A6A6]">15.3%</p>
+                    <p class="text-xl text-gray-700 mt-2">Employed</p>
+                </div>
+                <div class="stat-card border-l-8 border-[#E63946]">
+                    <p class="text-5xl font-bold text-[#E63946]">3.1%</p>
+                    <p class="text-xl text-gray-700 mt-2">Self-Employed</p>
+                </div>
+            </div>
+             <div class="bg-white rounded-lg shadow-md p-6 mt-8">
+                 <div class="chart-container">
+                    <canvas id="employmentDistributionChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="demographics" class="mb-12">
+             <h2 class="text-3xl font-bold text-center mb-2">Employment by Demographic Group</h2>
+             <p class="text-center text-lg text-gray-600 max-w-3xl mx-auto mb-8">Employment status is strongly linked to membership and age. The charts below illustrate how these groups are distributed across different employment categories.</p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-2xl font-semibold mb-1 text-center">Employment by Membership</h3>
+                    <p class="text-gray-600 mb-4 text-center">The data shows that "Freshers" are almost entirely students, while "Elders" and "Old Timers" show a greater diversity in employment status, with significant percentages in the employed and self-employed categories.</p>
+                    <div class="chart-container h-96 md:h-[450px]">
+                        <canvas id="membershipChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-2xl font-semibold mb-1 text-center">Employment by Sex</h3>
+                    <p class="text-gray-600 mb-4 text-center">While both genders are predominantly students, there are differences in other categories. Males are more likely to be employed, while females have a higher proportion of self-employed individuals.</p>
+                    <div class="chart-container h-96 md:h-[450px]">
+                        <canvas id="sexChart"></canvas>
+                    </div>
+                </div>
+                 <div class="bg-white rounded-lg shadow-md p-6 lg:col-span-2">
+                    <h3 class="text-2xl font-semibold mb-1 text-center">Employment by Age Group</h3>
+                    <p class="text-gray-600 mb-4 text-center max-w-2xl mx-auto">Age is the strongest indicator of employment status. The "Student" category is dominant for all age groups under 25. The employed and self-employed categories grow in prominence with increasing age.</p>
+                    <div class="chart-container">
+                        <canvas id="ageChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="key-insights">
+             <h2 class="text-3xl font-bold text-center mb-8">Key Insights Summarized</h2>
+             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-[#457B9D] text-white p-6 rounded-lg shadow-lg">
+                    <p class="text-6xl text-center mb-4">🎓</p>
+                    <h3 class="text-xl font-bold text-center mb-2">Student-Led Population</h3>
+                    <p class="text-center text-[#A8DADC]">Students make up the largest segment of the population, highlighting the youth and educational focus of the community.</p>
+                </div>
+                <div class="bg-[#457B9D] text-white p-6 rounded-lg shadow-lg">
+                     <p class="text-6xl text-center mb-4">💼</p>
+                    <h3 class="text-xl font-bold text-center mb-2">Age and Employment</h3>
+                    <p class="text-center text-[#A8DADC]">There is a clear transition from a student-focused lifestyle to a professional one, with employment and self-employment status increasing with age.</p>
+                </div>
+                <div class="bg-[#457B9D] text-white p-6 rounded-lg shadow-lg">
+                     <p class="text-6xl text-center mb-4">👩‍💻</p>
+                    <h3 class="text-xl font-bold text-center mb-2">Self-Employment Gaps</h3>
+                    <p class="text-center text-[#A8DADC]">While a minority, the self-employed category is more common among females, indicating potential entrepreneurial trends within that demographic.</p>
+                </div>
+             </div>
+        </section>
+
+    </main>
+
+    <footer class="text-center p-6 mt-8 text-gray-500">
+        <p>TKLS Employment Status Analysis | Data-driven insights for community planning.</p>
+    </footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    const tooltipTitleCallback = {
+        plugins: {
+            tooltip: {
+                callbacks: {
+                    title: function(tooltipItems) {
+                        const item = tooltipItems[0];
+                        let label = item.chart.data.labels[item.dataIndex];
+                        if (Array.isArray(label)) {
+                          return label.join(' ');
+                        } else {
+                          return label;
+                        }
+                    }
+                }
+            }
+        }
+    };
+
+    const employmentDistributionCtx = document.getElementById('employmentDistributionChart').getContext('2d');
+    new Chart(employmentDistributionCtx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Student', 'Employed', 'Self-Employed', 'Other/Minority'],
+            datasets: [{
+                label: 'Employment Status Distribution',
+                data: [73.2, 15.34, 3.05, 8.04],
+                backgroundColor: ['#F28F3B', '#00A6A6', '#E63946', '#A8DADC'],
+                borderColor: '#F1FAEE',
+                borderWidth: 4
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                ...tooltipTitleCallback.plugins,
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        font: {
+                            size: 14
+                        },
+                        color: '#1D3557'
+                    }
+                }
+            }
+        }
+    });
+
+    const membershipCtx = document.getElementById('membershipChart').getContext('2d');
+    new Chart(membershipCtx, {
+        type: 'bar',
+        data: {
+            labels: ['Student', 'Employed', 'Self-Employed', 'Retired', 'Other/Minority'],
+            datasets: [
+                { label: 'Associates', data: [84.57, 10.49, 1.23, 0, 3.7], backgroundColor: '#a8dadc' },
+                { label: 'Elders', data: [8.67, 50, 14.8, 2.04, 24.49], backgroundColor: '#457b9d' },
+                { label: 'Freshers', data: [96.45, 0, 0.59, 0, 2.96], backgroundColor: '#1d3557' },
+                { label: 'Infants', data: [78.38, 0, 0, 0, 21.62], backgroundColor: '#f28f3b' },
+                { label: 'Old Timers', data: [86.1, 9.85, 0.19, 0, 3.86], backgroundColor: '#00a6a6' },
+            ]
+        },
+        options: {
+            indexAxis: 'y',
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: { stacked: true, ticks: { callback: value => `${value}%` } },
+                y: { stacked: true }
+            },
+            plugins: {
+                ...tooltipTitleCallback.plugins,
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.dataset.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            if (context.parsed.x !== null) {
+                                label += context.parsed.x + '%';
+                            }
+                            return label;
+                        },
+                        title: function(tooltipItems) {
+                            return tooltipItems[0].label;
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    const sexCtx = document.getElementById('sexChart').getContext('2d');
+    new Chart(sexCtx, {
+        type: 'bar',
+        data: {
+            labels: ['Student', 'Employed', 'Self-Employed', 'Retired', 'Other/Minority'],
+            datasets: [
+                {
+                    label: 'Female',
+                    data: [73.53, 12.1, 3.78, 0.38, 10.21],
+                    backgroundColor: '#F28F3B',
+                    borderColor: '#ca6702',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Male',
+                    data: [72.73, 18.55, 2.36, 0.36, 6.0],
+                    backgroundColor: '#00A6A6',
+                    borderColor: '#1d3557',
+                    borderWidth: 1
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+             scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        callback: function(value) {
+                            return value + '%';
+                        }
+                    }
+                }
+            },
+            plugins: {
+                ...tooltipTitleCallback.plugins,
+                tooltip: {
+                    callbacks: {
+                       label: function(context) {
+                            let label = context.dataset.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            if (context.parsed.y !== null) {
+                                label += context.parsed.y.toFixed(2) + '%';
+                            }
+                            return label;
+                        },
+                        title: function(tooltipItems) {
+                            return tooltipItems[0].label;
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    const ageCtx = document.getElementById('ageChart').getContext('2d');
+    new Chart(ageCtx, {
+        type: 'bar',
+        data: {
+            labels: ['Student', 'Employed', 'Self-Employed', 'Retired', 'Other/Minority'],
+            datasets: [
+                { label: '0-17', data: [93.18, 0, 0, 0, 6.82], backgroundColor: '#a8dadc' },
+                { label: '18-24', data: [92.47, 5.16, 0.22, 0, 2.15], backgroundColor: '#457b9d' },
+                { label: '25-29', data: [41.94, 40.32, 3.23, 0, 14.52], backgroundColor: '#1d3557' },
+                { label: '30-39', data: [16.52, 56.52, 5.22, 0, 21.74], backgroundColor: '#00a6a6' },
+                { label: '40-49', data: [0, 51.56, 21.88, 1.56, 25.0], backgroundColor: '#f28f3b' },
+                { label: '50-59', data: [3.12, 40.62, 25, 6.25, 25.0], backgroundColor: '#e63946' },
+                { label: '60+', data: [0, 33.33, 33.33, 33.33, 0], backgroundColor: '#9b2226' }
+            ]
+        },
+        options: {
+            indexAxis: 'y',
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: { stacked: true, ticks: { callback: value => `${value}%` } },
+                y: { stacked: true }
+            },
+            plugins: {
+                ...tooltipTitleCallback.plugins,
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.dataset.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            if (context.parsed.x !== null) {
+                                label += context.parsed.x + '%';
+                            }
+                            return label;
+                        },
+                        title: function(tooltipItems) {
+                            return tooltipItems[0].label;
+                        }
+                    }
+                }
+            }
+        }
+    });
+});
+</script>
+</body>
+</html>

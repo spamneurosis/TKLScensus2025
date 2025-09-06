@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TKLS Factors Influencing Migration Analysis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F1FAEE;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 384px;
+            }
+        }
+        .stat-card {
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            padding: 1.5rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="text-[#1D3557]">
+
+    <header class="bg-[#457B9D] text-white p-8 text-center rounded-b-xl shadow-lg">
+        <h1 class="text-4xl md:text-5xl font-bold mb-2">TKLS Factors Influencing Migration</h1>
+        <p class="text-lg text-[#A8DADC]">An Infographic on Why People Move to Shillong</p>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <section id="top-factors" class="mb-12">
+            <h2 class="text-3xl font-bold text-center mb-2">Primary Reasons for Migration</h2>
+            <p class="text-center text-lg text-gray-600 max-w-3xl mx-auto mb-8">The data highlights the most prominent factors influencing the decision to come to Shillong. Education is the overwhelmingly dominant reason, followed by better living conditions and job opportunities.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="stat-card border-l-8 border-[#F28F3B]">
+                    <p class="text-5xl font-bold text-[#F28F3B]">739</p>
+                    <p class="text-xl text-gray-700 mt-2">Education Opportunities</p>
+                </div>
+                <div class="stat-card border-l-8 border-[#00A6A6]">
+                    <p class="text-5xl font-bold text-[#00A6A6]">51</p>
+                    <p class="text-xl text-gray-700 mt-2">Better Living/Facilities</p>
+                </div>
+                <div class="stat-card border-l-8 border-[#E63946]">
+                    <p class="text-5xl font-bold text-[#E63946]">30</p>
+                    <p class="text-xl text-gray-700 mt-2">Job/Employment</p>
+                </div>
+            </div>
+             <div class="bg-white rounded-lg shadow-md p-6 mt-8">
+                 <div class="chart-container">
+                    <canvas id="factorDistributionChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="influence" class="mb-12">
+             <h2 class="text-3xl font-bold text-center mb-2">Sources of Influence</h2>
+             <p class="text-center text-lg text-gray-600 max-w-3xl mx-auto mb-8">Beyond the primary reasons, it is also important to understand who or what influenced the decision to migrate. The data reveals that personal and family influence are the most significant drivers.</p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-2xl font-semibold mb-1 text-center">Influence by Membership</h3>
+                    <p class="text-gray-600 mb-4 text-center">While "Parents/Family" are a major influence for all groups, "Freshers" are heavily influenced by "Self," indicating a strong sense of personal agency. "Old Timers" are also influenced by "Friends/Peers" and "Church/Religious" institutions.</p>
+                    <div class="chart-container h-96 md:h-[450px]">
+                        <canvas id="membershipInfluenceChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-2xl font-semibold mb-1 text-center">Influence by Sex</h3>
+                    <p class="text-gray-600 mb-4 text-center">Both genders are influenced by "Parents/Family" and "Self" in roughly equal proportions. Males, however, show a slightly higher proportion of influence from "Friends/Peers," while females are more influenced by "Church/Religious" institutions.</p>
+                    <div class="chart-container h-96 md:h-[450px]">
+                        <canvas id="sexInfluenceChart"></canvas>
+                    </div>
+                </div>
+                 <div class="bg-white rounded-lg shadow-md p-6 lg:col-span-2">
+                    <h3 class="text-2xl font-semibold mb-1 text-center">Influence by Age Group</h3>
+                    <p class="text-gray-600 mb-4 text-center max-w-2xl mx-auto">Influence is highly dependent on age. Younger age groups (0-17) are almost entirely influenced by "Parents/Family," while older groups (18-24) show a dramatic increase in self-influence.</p>
+                    <div class="chart-container">
+                        <canvas id="ageInfluenceChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="temporal" class="mb-12">
+            <h2 class="text-3xl font-bold text-center mb-2">Influence Trends Over Time</h2>
+            <p class="text-center text-lg text-gray-600 max-w-3xl mx-auto mb-8">The influence of "Self" has increased dramatically in recent years, particularly since 2022, while the influence of "Parents/Family" has remained relatively constant. This suggests a shift toward more independent decision-making among recent migrants.</p>
+             <div class="bg-white rounded-lg shadow-md p-6 mt-8">
+                 <div class="chart-container">
+                    <canvas id="yearInfluenceChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="key-insights">
+             <h2 class="text-3xl font-bold text-center mb-8">Key Insights Summarized</h2>
+             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-[#457B9D] text-white p-6 rounded-lg shadow-lg">
+                    <p class="text-6xl text-center mb-4">🎓</p>
+                    <h3 class="text-xl font-bold text-center mb-2">Education is King</h3>
+                    <p class="text-center text-[#A8DADC]">Education is the primary motivator for migration, cementing Shillong's role as a major educational center in the region.</p>
+                </div>
+                <div class="bg-[#457B9D] text-white p-6 rounded-lg shadow-lg">
+                     <p class="text-6xl text-center mb-4">👨‍👩‍👧‍👦</p>
+                    <h3 class="text-xl font-bold text-center mb-2">Parents/Family are Key</h3>
+                    <p class="text-center text-[#A8DADC]">For a significant portion of the population, the decision to migrate is heavily influenced by parents or family members, highlighting strong familial ties.</p>
+                </div>
+                <div class="bg-[#457B9D] text-white p-6 rounded-lg shadow-lg">
+                     <p class="text-6xl text-center mb-4">🧑</p>
+                    <h3 class="text-xl font-bold text-center mb-2">Rising Self-Determination</h3>
+                    <p class="text-center text-[#A8DADC]">A growing number of people, particularly young adults, are making their own decisions to move to the city, indicating an increasing trend of personal autonomy.</p>
+                </div>
+             </div>
+        </section>
+
+    </main>
+
+    <footer class="text-center p-6 mt-8 text-gray-500">
+        <p>TKLS Factors Influencing Migration Analysis | Data-driven insights for community planning.</p>
+    </footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    const tooltipTitleCallback = {
+        plugins: {
+            tooltip: {
+                callbacks: {
+                    title: function(tooltipItems) {
+                        const item = tooltipItems[0];
+                        let label = item.chart.data.labels[item.dataIndex];
+                        if (Array.isArray(label)) {
+                          return label.join(' ');
+                        } else {
+                          return label;
+                        }
+                    }
+                }
+            }
+        }
+    };
+
+    const factorDistributionCtx = document.getElementById('factorDistributionChart').getContext('2d');
+    new Chart(factorDistributionCtx, {
+        type: 'bar',
+        data: {
+            labels: ['Education Opportunities', 'Better Living/Facilities', 'Other/Minority', 'Job/Employment', 'Family/Relatives'],
+            datasets: [{
+                label: 'Count',
+                data: [739, 51, 46, 30, 24],
+                backgroundColor: '#00A6A6'
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
+            plugins: {
+                ...tooltipTitleCallback.plugins,
+                legend: {
+                    display: false
+                }
+            }
+        }
+    });
+
+    const membershipInfluenceCtx = document.getElementById('membershipInfluenceChart').getContext('2d');
+    new Chart(membershipInfluenceCtx, {
+        type: 'bar',
+        data: {
+            labels: ['Parents/Family', ['Friends/Peers'], ['Church/Religious'], 'Self', ['Other/Minority']],
+            datasets: [
+                { label: 'Associates', data: [139, 3, 1, 15, 0], backgroundColor: '#a8dadc' },
+                { label: 'Elders', data: [14, 11, 0, 45, 0], backgroundColor: '#457b9d' },
+                { label: 'Freshers', data: [61, 8, 0, 89, 5], backgroundColor: '#1d3557' },
+                { label: 'Infants', data: [23, 0, 3, 1, 0], backgroundColor: '#f28f3b' },
+                { label: 'Old Timers', data: [195, 23, 6, 257, 4], backgroundColor: '#00a6a6' },
+            ]
+        },
+        options: {
+            indexAxis: 'y',
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: { stacked: true },
+                y: { stacked: true }
+            },
+            plugins: {
+                ...tooltipTitleCallback.plugins,
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.dataset.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            if (context.parsed.x !== null) {
+                                label += context.parsed.x;
+                            }
+                            return label;
+                        },
+                        title: function(tooltipItems) {
+                            return tooltipItems[0].label;
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    const sexInfluenceCtx = document.getElementById('sexInfluenceChart').getContext('2d');
+    new Chart(sexInfluenceCtx, {
+        type: 'bar',
+        data: {
+            labels: ['Parents/Family', ['Friends/Peers'], ['Church/Religious'], 'Self', ['Other/Minority']],
+            datasets: [
+                {
+                    label: 'Female',
+                    data: [217, 12, 3, 194, 5],
+                    backgroundColor: '#F28F3B',
+                    borderColor: '#ca6702',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Male',
+                    data: [213, 33, 7, 212, 4],
+                    backgroundColor: '#00A6A6',
+                    borderColor: '#1d3557',
+                    borderWidth: 1
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+             scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
+            plugins: {
+                ...tooltipTitleCallback.plugins,
+                tooltip: {
+                    callbacks: {
+                       label: function(context) {
+                            let label = context.dataset.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            if (context.parsed.y !== null) {
+                                label += context.parsed.y;
+                            }
+                            return label;
+                        },
+                        title: function(tooltipItems) {
+                            return tooltipItems[0].label;
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    const ageInfluenceCtx = document.getElementById('ageInfluenceChart').getContext('2d');
+    new Chart(ageInfluenceCtx, {
+        type: 'bar',
+        data: {
+            labels: ['Parents/Family', ['Friends/Peers'], ['Church/Religious'], 'Self', ['Other/Minority']],
+            datasets: [
+                { label: '0-12', data: [127, 0, 4, 5, 0], backgroundColor: '#a8dadc' },
+                { label: '13-17', data: [108, 6, 0, 44, 0], backgroundColor: '#457b9d' },
+                { label: '18-24', data: [143, 20, 6, 261, 9], backgroundColor: '#1d3557' },
+                { label: '25-29', data: [23, 5, 0, 31, 0], backgroundColor: '#00a6a6' },
+                { label: '30-39', data: [19, 14, 0, 40, 0], backgroundColor: '#f28f3b' },
+                { label: '40-49', data: [4, 0, 0, 14, 0], backgroundColor: '#e63946' },
+                { label: '50-59', data: [0, 0, 0, 3, 0], backgroundColor: '#9b2226' },
+            ]
+        },
+        options: {
+            indexAxis: 'y',
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: { stacked: true },
+                y: { stacked: true }
+            },
+            plugins: {
+                ...tooltipTitleCallback.plugins,
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.dataset.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            if (context.parsed.x !== null) {
+                                label += context.parsed.x;
+                            }
+                            return label;
+                        },
+                        title: function(tooltipItems) {
+                            return tooltipItems[0].label;
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    const yearInfluenceCtx = document.getElementById('yearInfluenceChart').getContext('2d');
+    new Chart(yearInfluenceCtx, {
+        type: 'bar',
+        data: {
+            labels: ['6.0', '14.0', '15.0', '1990.0', '1995.0', '2000.0', '2001.0', '2002.0', '2003.0', '2004.0', '2005.0', '2006.0', '2007.0', '2008.0', '2009.0', '2010.0', '2011.0', '2012.0', '2013.0', '2014.0', '2015.0', '2016.0', '2017.0', '2018.0', '2019.0', '2020.0', '2021.0', '2022.0', '2023.0', '2024.0', '2025.0'],
+            datasets: [
+                { label: 'Parents/Family', data: [1, 2, 1, 1, 1, 1, 2, 1, 4, 4, 3, 6, 8, 16, 7, 11, 26, 7, 12, 15, 11, 20, 11, 12, 26, 7, 6, 17, 57, 66, 66], backgroundColor: '#a8dadc' },
+                { label: 'Friends/Peers', data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 5, 1, 0, 0, 0, 0, 1, 2, 2, 1, 0, 1, 11, 7, 8], backgroundColor: '#457b9d' },
+                { label: 'Church/Religious', data: [0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 5, 0, 2], backgroundColor: '#1d3557' },
+                { label: 'Self', data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 6, 1, 1, 0, 3, 0, 6, 2, 0, 1, 8, 9, 10, 13, 6, 0, 8, 28, 87, 129, 88], backgroundColor: '#00a6a6' },
+                { label: 'Other/Minority', data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 2, 1, 5], backgroundColor: '#E63946' }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: { stacked: true },
+                y: { stacked: true, beginAtZero: true }
+            },
+            plugins: {
+                ...tooltipTitleCallback.plugins,
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.dataset.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            if (context.parsed.y !== null) {
+                                label += context.parsed.y;
+                            }
+                            return label;
+                        },
+                        title: function(tooltipItems) {
+                            return tooltipItems[0].label;
+                        }
+                    }
+                }
+            }
+        }
+    });
+});
+</script>
+</body>
+</html>

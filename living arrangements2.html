@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TKLS Living Arrangement Analysis - Alternate View</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FEFBF6;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 384px;
+            }
+        }
+        .stat-card {
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            padding: 1.5rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="text-[#3D3B40]">
+
+    <header class="bg-[#7F5283] text-white p-8 text-center rounded-b-xl shadow-lg">
+        <h1 class="text-4xl md:text-5xl font-bold mb-2">A New Look at Living Arrangements</h1>
+        <p class="text-lg text-[#A685AE]">An Alternate Analysis of TKLS Housing Data</p>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <section id="overview" class="mb-12">
+            <h2 class="text-3xl font-bold text-center mb-2">The Age of Transition: Leaving the Nest</h2>
+            <p class="text-center text-lg text-gray-600 max-w-3xl mx-auto mb-8">This analysis focuses on the journey away from the family home. While living with family is the baseline, a significant shift occurs during young adulthood. This chart tracks the percentage of each age group that lives independently (with friends, alone, or other arrangements).</p>
+             <div class="bg-white rounded-lg shadow-md p-6 mt-8">
+                 <div class="chart-container">
+                    <canvas id="independenceByAgeChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="demographics" class="mb-12">
+             <h2 class="text-3xl font-bold text-center mb-2">Who Lives Where? A Demographic Profile</h2>
+             <p class="text-center text-lg text-gray-600 max-w-3xl mx-auto mb-8">Different living arrangements attract distinct demographic groups. This section compares gender preferences and highlights the dominant membership tiers within each housing type.</p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                 <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-2xl font-semibold mb-1 text-center">Gender Profiles in Housing</h3>
+                    <p class="text-gray-600 mb-4 text-center">This radar chart compares the living arrangement choices for males and females. It highlights that females have a stronger tendency to live alone, while males are more inclined to live with friends.</p>
+                    <div class="chart-container h-96 md:h-[450px]">
+                        <canvas id="genderRadarChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-2xl font-semibold mb-1 text-center">Membership Hotspots</h3>
+                    <p class="text-gray-600 mb-4 text-center">This chart reveals which membership tier is most dominant within each living situation. "Associates" form the largest group living with family, while "Old Timers" are the biggest cohort living with friends.</p>
+                    <div class="chart-container h-96 md:h-[450px]">
+                        <canvas id="membershipDominanceChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="key-insights">
+             <h2 class="text-3xl font-bold text-center mb-8">Alternative Key Insights</h2>
+             <div class="space-y-6">
+                 <div class="bg-white p-6 rounded-lg shadow-md flex items-center space-x-4">
+                    <p class="text-5xl">📈</p>
+                    <div>
+                        <h3 class="text-xl font-bold">The 18-24 Peak</h3>
+                        <p class="text-gray-600">Nearly 65% of the 18-24 age group lives outside the family home, marking it as the critical age for transitioning to independent living arrangements like living with friends or alone.</p>
+                    </div>
+                 </div>
+                 <div class="bg-white p-6 rounded-lg shadow-md flex items-center space-x-4">
+                    <p class="text-5xl">🎯</p>
+                    <div>
+                        <h3 class="text-xl font-bold">Distinct Gender Choices</h3>
+                        <p class="text-gray-600">The data reveals clear, non-overlapping preferences: females are proportionally more likely to choose solitude (living alone), whereas males prefer communal living with friends.</p>
+                    </div>
+                 </div>
+                 <div class="bg-white p-6 rounded-lg shadow-md flex items-center space-x-4">
+                     <p class="text-5xl">👑</p>
+                    <div>
+                        <h3 class="text-xl font-bold">Membership Dominance</h3>
+                        <p class="text-gray-600">Each living arrangement has a clear dominant membership group. "Freshers" are the most prominent group living alone, reinforcing their transitional status within the community.</p>
+                    </div>
+                 </div>
+             </div>
+        </section>
+
+    </main>
+
+    <footer class="text-center p-6 mt-8 text-gray-500">
+        <p>TKLS Living Arrangement Analysis | An Alternate Perspective</p>
+    </footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    const tooltipTitleCallback = {
+        plugins: {
+            tooltip: {
+                callbacks: {
+                    title: function(tooltipItems) {
+                        const item = tooltipItems[0];
+                        let label = item.chart.data.labels[item.dataIndex];
+                        if (Array.isArray(label)) {
+                          return label.join(' ');
+                        } else {
+                          return label;
+                        }
+                    }
+                }
+            }
+        }
+    };
+    
+    const independenceByAgeCtx = document.getElementById('independenceByAgeChart').getContext('2d');
+    new Chart(independenceByAgeCtx, {
+        type: 'line',
+        data: {
+            labels: ['0-5', '6-12', '13-17', '18-24', '25-29', '30-39', '40-49', '50-59', '60+'],
+            datasets: [{
+                label: '% Living Outside Family Home',
+                data: [0, 1.01, 31.52, 64.88, 41.67, 29.57, 9.52, 17.65, 16.67],
+                backgroundColor: 'rgba(215, 189, 218, 0.2)',
+                borderColor: '#A685AE',
+                fill: true,
+                tension: 0.3
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 100,
+                    ticks: { callback: value => `${value}%` }
+                }
+            },
+            plugins: {
+                ...tooltipTitleCallback.plugins,
+                tooltip: {
+                    callbacks: {
+                       label: function(context) {
+                            return `${context.dataset.label}: ${context.parsed.y.toFixed(2)}%`;
+                        },
+                        title: function(tooltipItems) {
+                             return `Age Group: ${tooltipItems[0].label}`;
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+
+    const genderRadarCtx = document.getElementById('genderRadarChart').getContext('2d');
+    new Chart(genderRadarCtx, {
+        type: 'radar',
+        data: {
+            labels: ['With Family', ['With Friends'], 'Alone', 'Other'],
+            datasets: [
+                {
+                    label: 'Female',
+                    data: [57.39, 14.2, 17.8, 10.61],
+                    backgroundColor: 'rgba(215, 189, 218, 0.2)',
+                    borderColor: '#A685AE',
+                    pointBackgroundColor: '#A685AE'
+                },
+                {
+                    label: 'Male',
+                    data: [63.48, 19.48, 10.49, 6.55],
+                    backgroundColor: 'rgba(61, 59, 64, 0.2)',
+                    borderColor: '#3D3B40',
+                    pointBackgroundColor: '#3D3B40'
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                r: {
+                    angleLines: { color: 'rgba(0,0,0,0.1)' },
+                    grid: { color: 'rgba(0,0,0,0.1)' },
+                    pointLabels: { font: { size: 14 } },
+                    suggestedMin: 0,
+                    suggestedMax: 70
+                }
+            },
+            plugins: { ...tooltipTitleCallback.plugins }
+        }
+    });
+    
+    const membershipDominanceCtx = document.getElementById('membershipDominanceChart').getContext('2d');
+    new Chart(membershipDominanceCtx, {
+        type: 'bar',
+        data: {
+            labels: ['With Family', 'With Friends', 'Alone', 'Other/Minority'],
+            datasets: [
+                { label: 'Associates', data: [23.48, 4.47, 1.33, 2.15], backgroundColor: '#a8dadc' },
+                { label: 'Elders', data: [24.42, 5.03, 9.33, 20.43], backgroundColor: '#457b9d' },
+                { label: 'Freshers', data: [9.95, 16.76, 28.67, 25.81], backgroundColor: '#1d3557' },
+                { label: 'Old Timers', data: [35.61, 73.74, 60.67, 51.61], backgroundColor: '#00a6a6' },
+            ]
+        },
+        options: {
+            indexAxis: 'y',
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: { stacked: true, ticks: { callback: value => `${value}%` } },
+                y: { stacked: true, ticks: { autoSkip: false } }
+            },
+            plugins: {
+                ...tooltipTitleCallback.plugins,
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.dataset.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            if (context.parsed.x !== null) {
+                                label += context.parsed.x.toFixed(2) + '%';
+                            }
+                            return label;
+                        },
+                        title: function(tooltipItems) {
+                            return `Composition of "${tooltipItems[0].label}"`;
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+});
+</script>
+</body>
+</html>

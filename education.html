@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TKLS Education Analysis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F1FAEE;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 384px;
+            }
+        }
+        .stat-card {
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            padding: 1.5rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="text-[#1D3557]">
+
+    <header class="bg-[#457B9D] text-white p-8 text-center rounded-b-xl shadow-lg">
+        <h1 class="text-4xl md:text-5xl font-bold mb-2">TKLS Education Analysis</h1>
+        <p class="text-lg text-[#A8DADC]">An Infographic on Educational Demographics</p>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <section id="overview" class="mb-12">
+            <h2 class="text-3xl font-bold text-center mb-2">Specific Educational Attainment</h2>
+            <p class="text-center text-lg text-gray-600 max-w-3xl mx-auto mb-8">The data shows a wide range of educational backgrounds within the population. Graduate degrees, particularly in Arts and Science, are the most common, followed by high school qualifications.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="stat-card border-l-8 border-[#F28F3B]">
+                    <p class="text-5xl font-bold text-[#F28F3B]">24.7%</p>
+                    <p class="text-xl text-gray-700 mt-2">Graduate (arts)</p>
+                </div>
+                <div class="stat-card border-l-8 border-[#00A6A6]">
+                    <p class="text-5xl font-bold text-[#00A6A6]">22.4%</p>
+                    <p class="text-xl text-gray-700 mt-2">Pre high school/high school</p>
+                </div>
+                <div class="stat-card border-l-8 border-[#E63946]">
+                    <p class="text-5xl font-bold text-[#E63946]">17.3%</p>
+                    <p class="text-xl text-gray-700 mt-2">Higher secondary</p>
+                </div>
+            </div>
+             <div class="bg-white rounded-lg shadow-md p-6 mt-8">
+                 <div class="chart-container">
+                    <canvas id="educationDistributionChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="demographics" class="mb-12">
+             <h2 class="text-3xl font-bold text-center mb-2">Education by Demographic Group</h2>
+             <p class="text-center text-lg text-gray-600 max-w-3xl mx-auto mb-8">Educational attainment varies significantly across different membership tiers and between genders. The charts below illustrate these key differences.</p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-2xl font-semibold mb-1 text-center">Education by Membership</h3>
+                    <p class="text-gray-600 mb-4 text-center">Educational attainment varies significantly across different membership tiers. The "Freshers" and "Infants" groups are dominated by pre-high school and high school qualifications, while "Old Timers" have a much higher proportion of graduate and post-graduate degrees.</p>
+                    <div class="chart-container h-96 md:h-[450px]">
+                        <canvas id="membershipChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-2xl font-semibold mb-1 text-center">Education by Sex</h3>
+                    <p class="text-gray-600 mb-4 text-center">Gender plays a role in educational attainment. Females are more likely to have pursued a science or arts graduate degree, while males have a higher proportion of higher secondary and pre-high school qualifications.</p>
+                    <div class="chart-container h-96 md:h-[450px]">
+                        <canvas id="sexChart"></canvas>
+                    </div>
+                </div>
+                 <div class="bg-white rounded-lg shadow-md p-6 lg:col-span-2">
+                    <h3 class="text-2xl font-semibold mb-1 text-center">Years of Schooling by Demographic</h3>
+                    <p class="text-center text-gray-600 mb-4 max-w-2xl mx-auto">The overall years of schooling data provides a broader view. The median years of schooling is 15.0 years for both genders and "Freshers" have an average of 13.82 years, while "Old Timers" have 14.38 years.</p>
+                    <div class="chart-container">
+                        <canvas id="schoolingChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="key-insights">
+             <h2 class="text-3xl font-bold text-center mb-8">Key Insights Summarized</h2>
+             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-[#457B9D] text-white p-6 rounded-lg shadow-lg">
+                    <p class="text-6xl text-center mb-4">📚</p>
+                    <h3 class="text-xl font-bold text-center mb-2">High Educational Diversity</h3>
+                    <p class="text-center text-[#A8DADC]">The population has a wide range of educational backgrounds, from high school to doctoral degrees, indicating a diverse and well-educated community.</p>
+                </div>
+                <div class="bg-[#457B9D] text-white p-6 rounded-lg shadow-lg">
+                     <p class="text-6xl text-center mb-4">🎓</p>
+                    <h3 class="text-xl font-bold text-center mb-2">Education and Membership</h3>
+                    <p class="text-center text-[#A8DADC]">There's a strong link between membership status and educational attainment. Younger members have lower qualifications, while older members are highly educated.</p>
+                </div>
+                <div class="bg-[#457B9D] text-white p-6 rounded-lg shadow-lg">
+                     <p class="text-6xl text-center mb-4">🔬</p>
+                    <h3 class="text-xl font-bold text-center mb-2">Gender Differences</h3>
+                    <p class="text-center text-[#A8DADC]">Female members are more likely to pursue graduate degrees in arts and science, while male members are more likely to have higher secondary education.</p>
+                </div>
+             </div>
+        </section>
+
+    </main>
+
+    <footer class="text-center p-6 mt-8 text-gray-500">
+        <p>TKLS Education Analysis | Data-driven insights for community planning.</p>
+    </footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    const tooltipTitleCallback = {
+        plugins: {
+            tooltip: {
+                callbacks: {
+                    title: function(tooltipItems) {
+                        const item = tooltipItems[0];
+                        let label = item.chart.data.labels[item.dataIndex];
+                        if (Array.isArray(label)) {
+                          return label.join(' ');
+                        } else {
+                          return label;
+                        }
+                    }
+                }
+            }
+        }
+    };
+
+    const educationDistributionCtx = document.getElementById('educationDistributionChart').getContext('2d');
+    new Chart(educationDistributionCtx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Graduate (arts)', ['Pre high school/high school'], ['Higher secondary'], ['Graduate (science)'], 'Others', ['Post Graduate (arts)'], ['Graduate (commerce)'], ['Post Graduate (Science)'], ['Graduate (Others/equivalent)'], ['Post Graduate (Others/equivalent)'], ['Post Graduate (commerce)'], 'Doctorate'],
+            datasets: [{
+                label: 'Educational Attainment',
+                data: [24.68, 22.39, 17.34, 14.47, 7.0, 4.94, 2.76, 2.3, 1.49, 1.15, 0.8, 0.69],
+                backgroundColor: ['#F28F3B', '#00A6A6', '#E63946', '#A8DADC', '#1D3557', '#457B9D', '#8C462C', '#D0A288', '#F3B49F', '#7F4F24', '#A65A42', '#C66C52'],
+                borderColor: '#F1FAEE',
+                borderWidth: 4
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                ...tooltipTitleCallback.plugins,
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        font: {
+                            size: 10
+                        },
+                        color: '#1D3557'
+                    }
+                }
+            }
+        }
+    });
+
+    const membershipChartCtx = document.getElementById('membershipChart').getContext('2d');
+    new Chart(membershipChartCtx, {
+        type: 'bar',
+        data: {
+            labels: ['Doctorate', ['Graduate (Others/equivalent)'], ['Graduate (arts)'], ['Graduate (commerce)'], ['Graduate (science)'], ['Higher secondary'], 'Others', ['Post Graduate (Others/equivalent)'], ['Post Graduate (Science)'], ['Post Graduate (arts)'], ['Post Graduate (commerce)'], ['Pre high school/high school']],
+            datasets: [
+                { label: 'Associates', data: [0, 0, 1.4, 4.17, 1.59, 3.97, 28.33, 30, 15, 11.63, 0, 62.05], backgroundColor: '#a8dadc' },
+                { label: 'Freshers', data: [0, 0, 26.17, 25, 26.98, 36.42, 13.33, 10, 5, 2.33, 0, 3.08], backgroundColor: '#457b9d' },
+                { label: 'Infants', data: [0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 13.85], backgroundColor: '#1d3557' },
+                { label: 'Old Timers', data: [100, 100, 72.43, 70.83, 71.43, 59.6, 53.33, 60, 80, 86.05, 100, 21.03], backgroundColor: '#f28f3b' }
+            ]
+        },
+        options: {
+            indexAxis: 'y',
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: { stacked: true, ticks: { callback: value => `${value}%` } },
+                y: { stacked: true, ticks: { autoSkip: false } }
+            },
+            plugins: {
+                ...tooltipTitleCallback.plugins,
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.dataset.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            if (context.parsed.x !== null) {
+                                label += context.parsed.x + '%';
+                            }
+                            return label;
+                        },
+                        title: function(tooltipItems) {
+                            return tooltipItems[0].label;
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    const sexChartCtx = document.getElementById('sexChart').getContext('2d');
+    new Chart(sexChartCtx, {
+        type: 'bar',
+        data: {
+            labels: ['Doctorate', ['Graduate (Others/equivalent)'], ['Graduate (arts)'], ['Graduate (commerce)'], ['Graduate (science)'], ['Higher secondary'], 'Others', ['Post Graduate (Others/equivalent)'], ['Post Graduate (Science)'], ['Post Graduate (arts)'], ['Post Graduate (commerce)'], ['Pre high school/high school']],
+            datasets: [
+                {
+                    label: 'Female',
+                    data: [60, 46.15, 51.4, 59.09, 61.11, 39.33, 55, 20, 65, 51.16, 71.43, 45.64],
+                    backgroundColor: '#F28F3B',
+                    borderColor: '#ca6702',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Male',
+                    data: [40, 53.85, 48.6, 40.91, 38.89, 60.67, 45, 80, 35, 48.84, 28.57, 54.36],
+                    backgroundColor: '#00A6A6',
+                    borderColor: '#1d3557',
+                    borderWidth: 1
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        callback: function(value) {
+                            return value + '%';
+                        }
+                    }
+                }
+            },
+            plugins: {
+                ...tooltipTitleCallback.plugins,
+                tooltip: {
+                    callbacks: {
+                       label: function(context) {
+                            let label = context.dataset.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            if (context.parsed.y !== null) {
+                                label += context.parsed.y.toFixed(2) + '%';
+                            }
+                            return label;
+                        },
+                        title: function(tooltipItems) {
+                            return tooltipItems[0].label;
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    const schoolingChartCtx = document.getElementById('schoolingChart').getContext('2d');
+    new Chart(schoolingChartCtx, {
+        type: 'bar',
+        data: {
+            labels: ['Overall', 'Female', 'Male', 'Associates', 'Freshers', 'Infants', 'Old Timers'],
+            datasets: [
+                {
+                    label: 'Median Years of Schooling',
+                    data: [15, 15, 15, 10, 15, 10, 15],
+                    backgroundColor: '#00A6A6',
+                    borderColor: '#1d3557',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Mean Years of Schooling',
+                    data: [13.49, 13.74, 13.25, 10.83, 13.82, 10, 14.38],
+                    backgroundColor: '#F28F3B',
+                    borderColor: '#ca6702',
+                    borderWidth: 1
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
+            plugins: {
+                ...tooltipTitleCallback.plugins,
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.dataset.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            if (context.parsed.y !== null) {
+                                label += context.parsed.y.toFixed(2);
+                            }
+                            return label;
+                        },
+                        title: function(tooltipItems) {
+                            return tooltipItems[0].label;
+                        }
+                    }
+                }
+            }
+        }
+    });
+});
+</script>
+</body>
+</html>

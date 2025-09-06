@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TKLS Purpose for Coming to Shillong Analysis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F1FAEE;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 384px;
+            }
+        }
+        .stat-card {
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            padding: 1.5rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="text-[#1D3557]">
+
+    <header class="bg-[#457B9D] text-white p-8 text-center rounded-b-xl shadow-lg">
+        <h1 class="text-4xl md:text-5xl font-bold mb-2">TKLS Purpose for Coming to Shillong Analysis</h1>
+        <p class="text-lg text-[#A8DADC]">An Infographic on Migration Motives</p>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <section id="overview" class="mb-12">
+            <h2 class="text-3xl font-bold text-center mb-2">Primary Reasons for Arrival</h2>
+            <p class="text-center text-lg text-gray-600 max-w-3xl mx-auto mb-8">The data shows a clear pattern in why people have come to Shillong. Education is the overwhelmingly dominant reason, followed by employment and family-related motives. Other reasons, such as health and religion, make up a very small percentage.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="stat-card border-l-8 border-[#F28F3B]">
+                    <p class="text-5xl font-bold text-[#F28F3B]">73.8%</p>
+                    <p class="text-xl text-gray-700 mt-2">Education</p>
+                </div>
+                <div class="stat-card border-l-8 border-[#00A6A6]">
+                    <p class="text-5xl font-bold text-[#00A6A6]">9.5%</p>
+                    <p class="text-xl text-gray-700 mt-2">Employment</p>
+                </div>
+                <div class="stat-card border-l-8 border-[#E63946]">
+                    <p class="text-5xl font-bold text-[#E63946]">7.8%</p>
+                    <p class="text-xl text-gray-700 mt-2">Family/Relatives</p>
+                </div>
+            </div>
+             <div class="bg-white rounded-lg shadow-md p-6 mt-8">
+                 <div class="chart-container">
+                    <canvas id="purposeDistributionChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="demographics" class="mb-12">
+             <h2 class="text-3xl font-bold text-center mb-2">Purpose by Demographic</h2>
+             <p class="text-center text-lg text-gray-600 max-w-3xl mx-auto mb-8">The reason for coming to Shillong is strongly correlated with key demographic factors such as membership, sex, and age. The charts below illustrate these relationships.</p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-2xl font-semibold mb-1 text-center">Purpose by Membership</h3>
+                    <p class="text-gray-600 mb-4 text-center">Membership tiers show distinct reasons for arrival. The "Freshers" group is almost exclusively in Shillong for education, while "Elders" and "Old Timers" show a greater diversity of reasons, including employment and family.</p>
+                    <div class="chart-container h-96 md:h-[450px]">
+                        <canvas id="membershipChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-2xl font-semibold mb-1 text-center">Purpose by Sex</h3>
+                    <p class="text-gray-600 mb-4 text-center">While education is the top reason for both males and females, the data shows differences in other categories. Males are more likely to have arrived for employment, while females are more likely to have come for family/relatives.</p>
+                    <div class="chart-container h-96 md:h-[450px]">
+                        <canvas id="sexChart"></canvas>
+                    </div>
+                </div>
+                 <div class="bg-white rounded-lg shadow-md p-6 lg:col-span-2">
+                    <h3 class="text-2xl font-semibold mb-1 text-center">Purpose by Age Group</h3>
+                    <p class="text-gray-600 mb-4 text-center max-w-2xl mx-auto">The age of arrival strongly dictates the purpose. The youngest age groups are almost entirely here for education. The "Employment" and "Family/Relatives" categories grow in prominence as the age group increases.</p>
+                    <div class="chart-container">
+                        <canvas id="ageChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="temporal" class="mb-12">
+            <h2 class="text-3xl font-bold text-center mb-2">Year of Arrival Trends</h2>
+            <p class="text-center text-lg text-gray-600 max-w-3xl mx-auto mb-8">The trend of people coming to Shillong, primarily for education, has seen a sharp increase in recent years, especially from 2022 onwards.</p>
+             <div class="bg-white rounded-lg shadow-md p-6 mt-8">
+                 <div class="chart-container">
+                    <canvas id="yearChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="key-insights">
+             <h2 class="text-3xl font-bold text-center mb-8">Key Insights Summarized</h2>
+             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-[#457B9D] text-white p-6 rounded-lg shadow-lg">
+                    <p class="text-6xl text-center mb-4">🎓</p>
+                    <h3 class="text-xl font-bold text-center mb-2">Educational Hub</h3>
+                    <p class="text-center text-[#A8DADC]">Shillong is a major educational hub, with education being the primary reason for arrival for over 70% of the population.</p>
+                </div>
+                <div class="bg-[#457B9D] text-white p-6 rounded-lg shadow-lg">
+                     <p class="text-6xl text-center mb-4">📈</p>
+                    <h3 class="text-xl font-bold text-center mb-2">Recent Population Growth</h3>
+                    <p class="text-center text-[#A8DADC]">The number of people arriving in the city, especially for education, has increased dramatically in the last few years, indicating recent and rapid population growth.</p>
+                </div>
+                <div class="bg-[#457B9D] text-white p-6 rounded-lg shadow-lg">
+                     <p class="text-6xl text-center mb-4">👨‍👩‍👧‍👦</p>
+                    <h3 class="text-xl font-bold text-center mb-2">Motives Change with Age</h3>
+                    <p class="text-center text-[#A8DADC]">The reasons for coming to Shillong are highly dependent on age, with younger people arriving for education and older people coming for employment and family-related reasons.</p>
+                </div>
+             </div>
+        </section>
+
+    </main>
+
+    <footer class="text-center p-6 mt-8 text-gray-500">
+        <p>TKLS Purpose for Coming to Shillong Analysis | Data-driven insights for community planning.</p>
+    </footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    const tooltipTitleCallback = {
+        plugins: {
+            tooltip: {
+                callbacks: {
+                    title: function(tooltipItems) {
+                        const item = tooltipItems[0];
+                        let label = item.chart.data.labels[item.dataIndex];
+                        if (Array.isArray(label)) {
+                          return label.join(' ');
+                        } else {
+                          return label;
+                        }
+                    }
+                }
+            }
+        }
+    };
+
+    const purposeDistributionCtx = document.getElementById('purposeDistributionChart').getContext('2d');
+    new Chart(purposeDistributionCtx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Education', 'Employment', ['Family/Relatives'], ['Other/Minority']],
+            datasets: [{
+                label: 'Purpose Distribution',
+                data: [73.84, 9.46, 7.79, 8.81],
+                backgroundColor: ['#F28F3B', '#00A6A6', '#E63946', '#A8DADC'],
+                borderColor: '#F1FAEE',
+                borderWidth: 4
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                ...tooltipTitleCallback.plugins,
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        font: {
+                            size: 14
+                        },
+                        color: '#1D3557'
+                    }
+                }
+            }
+        }
+    });
+
+    const membershipCtx = document.getElementById('membershipChart').getContext('2d');
+    new Chart(membershipCtx, {
+        type: 'bar',
+        data: {
+            labels: ['Education', 'Employment', ['Family/Relatives'], ['Other/Minority']],
+            datasets: [
+                { label: 'Associates', data: [126, 13, 14, 11], backgroundColor: '#a8dadc' },
+                { label: 'Elders', data: [42, 72, 41, 40], backgroundColor: '#457b9d' },
+                { label: 'Freshers', data: [152, 1, 4, 5], backgroundColor: '#1d3557' },
+                { label: 'Infants', data: [25, 0, 9, 4], backgroundColor: '#f28f3b' },
+                { label: 'Old Timers', data: [451, 16, 16, 35], backgroundColor: '#00a6a6' },
+            ]
+        },
+        options: {
+            indexAxis: 'y',
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: { stacked: true },
+                y: { stacked: true }
+            },
+            plugins: {
+                ...tooltipTitleCallback.plugins,
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.dataset.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            if (context.parsed.x !== null) {
+                                label += context.parsed.x;
+                            }
+                            return label;
+                        },
+                        title: function(tooltipItems) {
+                            return tooltipItems[0].label;
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    const sexCtx = document.getElementById('sexChart').getContext('2d');
+    new Chart(sexCtx, {
+        type: 'bar',
+        data: {
+            labels: ['Education', 'Employment', ['Family/Relatives'], ['Other/Minority']],
+            datasets: [
+                {
+                    label: 'Female',
+                    data: [407, 38, 52, 31],
+                    backgroundColor: '#F28F3B',
+                    borderColor: '#ca6702',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Male',
+                    data: [386, 64, 32, 64],
+                    backgroundColor: '#00A6A6',
+                    borderColor: '#1d3557',
+                    borderWidth: 1
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+             scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
+            plugins: {
+                ...tooltipTitleCallback.plugins,
+                tooltip: {
+                    callbacks: {
+                       label: function(context) {
+                            let label = context.dataset.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            if (context.parsed.y !== null) {
+                                label += context.parsed.y;
+                            }
+                            return label;
+                        },
+                        title: function(tooltipItems) {
+                            return tooltipItems[0].label;
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    const ageCtx = document.getElementById('ageChart').getContext('2d');
+    new Chart(ageCtx, {
+        type: 'bar',
+        data: {
+            labels: ['Education', 'Employment', ['Family/Relatives'], ['Other/Minority']],
+            datasets: [
+                { label: '0-17', data: [281, 3, 20, 5], backgroundColor: '#a8dadc' },
+                { label: '18-24', data: [426, 6, 11, 15], backgroundColor: '#457b9d' },
+                { label: '25-29', data: [28, 9, 0, 26], backgroundColor: '#1d3557' },
+                { label: '30-39', data: [34, 40, 12, 29], backgroundColor: '#00a6a6' },
+                { label: '40-49', data: [10, 28, 15, 11], backgroundColor: '#f28f3b' },
+                { label: '50-59', data: [4, 13, 11, 4], backgroundColor: '#e63946' },
+                { label: '60+', data: [1, 2, 3, 1], backgroundColor: '#9b2226' }
+            ]
+        },
+        options: {
+            indexAxis: 'y',
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: { stacked: true },
+                y: { stacked: true }
+            },
+            plugins: {
+                ...tooltipTitleCallback.plugins,
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.dataset.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            if (context.parsed.x !== null) {
+                                label += context.parsed.x;
+                            }
+                            return label;
+                        },
+                        title: function(tooltipItems) {
+                            return tooltipItems[0].label;
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    const yearCtx = document.getElementById('yearChart').getContext('2d');
+    new Chart(yearCtx, {
+        type: 'bar',
+        data: {
+            labels: ['6.0', '14.0', '15.0', '1980.0', '1988.0', '1990.0', '1992.0', '1995.0', '1997.0', '1998.0', '2000.0', '2001.0', '2002.0', '2003.0', '2004.0', '2005.0', '2006.0', '2007.0', '2008.0', '2009.0', '2010.0', '2011.0', '2012.0', '2013.0', '2014.0', '2015.0', '2016.0', '2017.0', '2018.0', '2019.0', '2020.0', '2021.0', '2022.0', '2023.0', '2024.0', '2025.0', '2923.0'],
+            datasets: [
+                { label: 'Education', data: [1, 2, 0, 0, 0, 1, 2, 0, 1, 0, 1, 6, 0, 2, 4, 4, 4, 9, 20, 7, 13, 33, 9, 10, 12, 19, 13, 21, 16, 32, 9, 8, 42, 148, 180, 164, 0], backgroundColor: '#F28F3B' },
+                { label: 'Employment', data: [0, 0, 0, 1, 0, 0, 0, 3, 1, 2, 4, 1, 0, 1, 0, 0, 1, 1, 9, 8, 0, 3, 2, 0, 2, 0, 14, 1, 7, 2, 1, 1, 7, 11, 14, 3, 1], backgroundColor: '#00A6A6' },
+                { label: 'Family/Relatives', data: [0, 0, 0, 0, 0, 3, 0, 0, 1, 0, 1, 1, 1, 3, 1, 1, 6, 1, 3, 1, 3, 3, 1, 4, 3, 1, 3, 4, 4, 5, 3, 2, 7, 8, 3, 6, 0], backgroundColor: '#E63946' },
+                { label: 'Health', data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0], backgroundColor: '#9B2226' },
+                { label: 'Religion', data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], backgroundColor: '#CA6702' },
+                { label: 'Other/Minority', data: [0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 6, 0, 3, 2, 0, 2, 4, 2, 0, 0, 3, 9, 3, 10, 4, 0, 6, 1, 14, 14, 6, 0], backgroundColor: '#A8DADC' }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: { stacked: true },
+                y: { stacked: true, beginAtZero: true }
+            },
+            plugins: {
+                ...tooltipTitleCallback.plugins,
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.dataset.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            if (context.parsed.y !== null) {
+                                label += context.parsed.y;
+                            }
+                            return label;
+                        },
+                        title: function(tooltipItems) {
+                            return tooltipItems[0].label;
+                        }
+                    }
+                }
+            }
+        }
+    });
+});
+</script>
+</body>
+</html>

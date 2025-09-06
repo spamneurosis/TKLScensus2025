@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TKLS Sex/Gender Analysis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F1FAEE;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 384px;
+            max-height: 450px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 450px;
+            }
+        }
+        .stat-card {
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            padding: 1.5rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="text-[#1D3557]">
+
+    <header class="bg-[#457B9D] text-white p-8 text-center rounded-b-xl shadow-lg">
+        <h1 class="text-4xl md:text-5xl font-bold mb-2">TKLS Sex/Gender Analysis</h1>
+        <p class="text-lg text-[#A8DADC]">An Infographic on Gender Demographics</p>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <section id="overall-summary" class="mb-12">
+            <h2 class="text-3xl font-bold text-center mb-2">Overall Population Summary</h2>
+            <p class="text-center text-lg text-gray-600 max-w-3xl mx-auto mb-8">The TKLS population is almost evenly split between male and female, with a slight male majority. The data reveals a near 1:1 ratio, showing a balanced community at a high level.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="stat-card border-l-8 border-[#F28F3B]">
+                    <p class="text-5xl font-bold text-[#F28F3B]">50.87%</p>
+                    <p class="text-xl text-gray-700 mt-2">Male</p>
+                </div>
+                <div class="stat-card border-l-8 border-[#00A6A6]">
+                    <p class="text-5xl font-bold text-[#00A6A6]">49.13%</p>
+                    <p class="text-xl text-gray-700 mt-2">Female</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="demographics" class="mb-12">
+             <h2 class="text-3xl font-bold text-center mb-2">Sex Distribution by Membership and Age</h2>
+             <p class="text-center text-lg text-gray-600 max-w-3xl mx-auto mb-8">While the overall population is balanced, there are interesting gender dynamics within specific membership tiers and age groups. The following charts provide a detailed view of these relationships.</p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                 <div class="bg-white rounded-lg shadow-md p-6 lg:col-span-2">
+                    <h3 class="text-2xl font-semibold mb-1 text-center">Membership Composition by Gender</h3>
+                    <p class="text-gray-600 mb-4 text-center">This chart breaks down the membership tiers for both male and female populations. Both genders are dominated by "Old Timers," but males have a higher proportion of "Associates" and "Elders," while females have a larger share of "Freshers" and "Infants."</p>
+                    <div class="chart-container h-96 md:h-[450px]">
+                        <canvas id="membershipChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-2xl font-semibold mb-1 text-center">Age Distribution by Gender</h3>
+                    <p class="text-gray-600 mb-4 text-center">This chart shows the age composition for both males and females. The 18-24 age group is the largest for both genders, but females are proportionally more represented in this group. Males have a larger share of the population in older age groups.</p>
+                    <div class="chart-container h-96 md:h-[450px]">
+                        <canvas id="ageChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-2xl font-semibold mb-1 text-center">Mean Age by Sex</h3>
+                    <p class="text-gray-600 mb-4 text-center">The mean age for males is slightly higher than for females, though the difference is minimal and the confidence intervals overlap. This indicates that while there are differences in age distribution, the average age for each gender is very similar.</p>
+                    <div class="chart-container h-96 md:h-[450px]">
+                        <canvas id="meanAgeChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="key-insights">
+             <h2 class="text-3xl font-bold text-center mb-8">Key Insights Summarized</h2>
+             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-[#457B9D] text-white p-6 rounded-lg shadow-lg">
+                    <p class="text-6xl text-center mb-4">⚖️</p>
+                    <h3 class="text-xl font-bold text-center mb-2">A Balanced Community</h3>
+                    <p class="text-center text-[#A8DADC]">The overall population is nearly perfectly balanced between males and females, with a female to male ratio of 0.97.</p>
+                </div>
+                <div class="bg-[#457B9D] text-white p-6 rounded-lg shadow-lg">
+                     <p class="text-6xl text-center mb-4">🧑‍🤝‍🧑</p>
+                    <h3 class="text-xl font-bold text-center mb-2">Similar Age Profiles</h3>
+                    <p class="text-center text-[#A8DADC]">Both males and females are concentrated in the 18-24 age group, highlighting a shared demographic profile in this key age bracket.</p>
+                </div>
+                <div class="bg-[#457B9D] text-white p-6 rounded-lg shadow-lg">
+                     <p class="text-6xl text-center mb-4">📈</p>
+                    <h3 class="text-xl font-bold text-center mb-2">Subtle Differences</h3>
+                    <p class="text-center text-[#A8DADC]">While the overall distribution is balanced, subtle differences exist. Males are more likely to be in the "Elders" and "Associates" categories, while females are more prominent among "Freshers."</p>
+                </div>
+             </div>
+        </section>
+
+    </main>
+
+    <footer class="text-center p-6 mt-8 text-gray-500">
+        <p>TKLS Sex/Gender Analysis | Data-driven insights for community planning.</p>
+    </footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    const tooltipTitleCallback = {
+        plugins: {
+            tooltip: {
+                callbacks: {
+                    title: function(tooltipItems) {
+                        const item = tooltipItems[0];
+                        let label = item.chart.data.labels[item.dataIndex];
+                        if (Array.isArray(label)) {
+                          return label.join(' ');
+                        } else {
+                          return label;
+                        }
+                    }
+                }
+            }
+        }
+    };
+
+    const membershipChartCtx = document.getElementById('membershipChart').getContext('2d');
+    new Chart(membershipChartCtx, {
+        type: 'bar',
+        data: {
+            labels: ['Female', 'Male'],
+            datasets: [
+                { label: 'Associates', data: [71, 93], backgroundColor: '#a8dadc' },
+                { label: 'Elders', data: [90, 109], backgroundColor: '#457b9d' },
+                { label: 'Freshers', data: [87, 80], backgroundColor: '#1d3557' },
+                { label: 'Infants', data: [18, 25], backgroundColor: '#f28f3b' },
+                { label: 'Old Timers', data: [271, 248], backgroundColor: '#00a6a6' }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: { stacked: true },
+                y: { stacked: true, beginAtZero: true, title: { display: true, text: 'Count' } }
+            },
+            plugins: {
+                ...tooltipTitleCallback.plugins,
+                tooltip: {
+                    mode: 'index'
+                }
+            }
+        }
+    });
+
+    const ageChartCtx = document.getElementById('ageChart').getContext('2d');
+    new Chart(ageChartCtx, {
+        type: 'bar',
+        data: {
+            labels: ['0-5', '6-12', '13-17', '18-24', '25-29', '30-39', '40-49', '50-59', '60-69', '70+'],
+            datasets: [
+                {
+                    label: 'Female',
+                    data: [24, 46, 87, 257, 25, 50, 30, 13, 2, 3],
+                    backgroundColor: '#F28F3B',
+                    borderColor: '#ca6702',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Male',
+                    data: [32, 59, 87, 210, 43, 65, 34, 21, 4, 0],
+                    backgroundColor: '#00A6A6',
+                    borderColor: '#1d3557',
+                    borderWidth: 1
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+             scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
+            plugins: {
+                ...tooltipTitleCallback.plugins
+            }
+        }
+    });
+
+    const meanAgeChartCtx = document.getElementById('meanAgeChart').getContext('2d');
+    new Chart(meanAgeChartCtx, {
+        type: 'bar',
+        data: {
+            labels: ['Male', 'Female'],
+            datasets: [{
+                label: 'Mean Age',
+                data: [22.43, 21.82],
+                backgroundColor: ['#F28F3B', '#00A6A6'],
+                borderColor: ['#ca6702', '#1d3557'],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 30,
+                    title: {
+                        display: true,
+                        text: 'Mean Age'
+                    }
+                }
+            },
+            plugins: {
+                ...tooltipTitleCallback.plugins,
+                legend: {
+                    display: false
+                }
+            }
+        }
+    });
+});
+</script>
+</body>
+</html>

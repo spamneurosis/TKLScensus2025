@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TKLS Living Arrangement Analysis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F1FAEE;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 384px;
+            }
+        }
+        .stat-card {
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            padding: 1.5rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="text-[#1D3557]">
+
+    <header class="bg-[#457B9D] text-white p-8 text-center rounded-b-xl shadow-lg">
+        <h1 class="text-4xl md:text-5xl font-bold mb-2">TKLS Living Arrangement Analysis</h1>
+        <p class="text-lg text-[#A8DADC]">An Infographic on How People Live</p>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <section id="overview" class="mb-12">
+            <h2 class="text-3xl font-bold text-center mb-2">How Does the Population Live?</h2>
+            <p class="text-center text-lg text-gray-600 max-w-3xl mx-auto mb-8">Living with family is the most common arrangement, representing over 60% of the population. Living with friends and alone are significant but smaller categories.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="stat-card border-l-8 border-[#F28F3B]">
+                    <p class="text-5xl font-bold text-[#F28F3B]">60.4%</p>
+                    <p class="text-xl text-gray-700 mt-2">Live With Family</p>
+                </div>
+                <div class="stat-card border-l-8 border-[#00A6A6]">
+                    <p class="text-5xl font-bold text-[#00A6A6]">16.8%</p>
+                    <p class="text-xl text-gray-700 mt-2">Live With Friends</p>
+                </div>
+                <div class="stat-card border-l-8 border-[#E63946]">
+                    <p class="text-5xl font-bold text-[#E63946]">14.1%</p>
+                    <p class="text-xl text-gray-700 mt-2">Live Alone</p>
+                </div>
+                 <div class="stat-card border-l-8 border-[#a8dadc]">
+                    <p class="text-5xl font-bold text-[#a8dadc]">8.7%</p>
+                    <p class="text-xl text-gray-700 mt-2">Other/Minority</p>
+                </div>
+            </div>
+             <div class="bg-white rounded-lg shadow-md p-6 mt-8">
+                 <div class="chart-container">
+                    <canvas id="livingArrangementDistributionChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="demographics" class="mb-12">
+             <h2 class="text-3xl font-bold text-center mb-2">Demographic Patterns in Living Arrangements</h2>
+             <p class="text-center text-lg text-gray-600 max-w-3xl mx-auto mb-8">Living arrangements are deeply influenced by age, membership, and sex. This section explores how these demographic factors shape housing decisions across the population.</p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-2xl font-semibold mb-1">Living Arrangement by Membership</h3>
+                    <p class="text-gray-600 mb-4">The data shows a clear pattern: "Infants" and "Associates" almost exclusively live with family. Conversely, "Freshers" are the largest group to live alone, while "Old Timers" are heavily concentrated in shared living with friends.</p>
+                    <div class="chart-container h-96 md:h-[450px]">
+                        <canvas id="membershipChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-2xl font-semibold mb-1">Living Arrangement by Sex</h3>
+                    <p class="text-gray-600 mb-4">While living with family is the most common for both genders, there are notable differences. Females are more likely to live alone than males, while living with friends is a more common choice for males.</p>
+                    <div class="chart-container h-96 md:h-[450px]">
+                        <canvas id="sexChart"></canvas>
+                    </div>
+                </div>
+                 <div class="bg-white rounded-lg shadow-md p-6 lg:col-span-2">
+                    <h3 class="text-2xl font-semibold mb-1 text-center">Living Arrangement by Age Group</h3>
+                    <p class="text-gray-600 mb-4 text-center max-w-2xl mx-auto">The age distribution for living with family is very broad. For other arrangements, the 18-24 age group is a significant factor, dominating living with friends and living alone arrangements.</p>
+                    <div class="chart-container">
+                        <canvas id="ageChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="key-insights">
+             <h2 class="text-3xl font-bold text-center mb-8">Key Insights Summarized</h2>
+             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-[#457B9D] text-white p-6 rounded-lg shadow-lg">
+                    <p class="text-6xl text-center mb-4">🏠</p>
+                    <h3 class="text-xl font-bold text-center mb-2">Family First</h3>
+                    <p class="text-center text-[#A8DADC]">Living with family is the most prevalent arrangement for all age groups, genders, and membership tiers, with over 60% of the population.</p>
+                </div>
+                <div class="bg-[#457B9D] text-white p-6 rounded-lg shadow-lg">
+                     <p class="text-6xl text-center mb-4">👩‍🎓</p>
+                    <h3 class="text-xl font-bold text-center mb-2">Young Adult Trends</h3>
+                    <p class="text-center text-[#A8DADC]">The 18-24 age group is overrepresented in all living arrangements outside of family, making up the majority of those living with friends or alone.</p>
+                </div>
+                <div class="bg-[#457B9D] text-white p-6 rounded-lg shadow-lg">
+                     <p class="text-6xl text-center mb-4">👫</p>
+                    <h3 class="text-xl font-bold text-center mb-2">Gender Differences</h3>
+                    <p class="text-center text-[#A8DADC]">Females are more likely to live alone, while males show a stronger preference for living with friends, indicating different social and personal preferences.</p>
+                </div>
+             </div>
+        </section>
+
+    </main>
+
+    <footer class="text-center p-6 mt-8 text-gray-500">
+        <p>TKLS Living Arrangement Analysis | Data-driven insights for community planning.</p>
+    </footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    const tooltipTitleCallback = {
+        plugins: {
+            tooltip: {
+                callbacks: {
+                    title: function(tooltipItems) {
+                        const item = tooltipItems[0];
+                        let label = item.chart.data.labels[item.dataIndex];
+                        if (Array.isArray(label)) {
+                          return label.join(' ');
+                        } else {
+                          return label;
+                        }
+                    }
+                }
+            }
+        }
+    };
+
+    const livingArrangementDistributionCtx = document.getElementById('livingArrangementDistributionChart').getContext('2d');
+    new Chart(livingArrangementDistributionCtx, {
+        type: 'doughnut',
+        data: {
+            labels: ['With Family', 'With Friends', 'Alone', 'Other/Minority'],
+            datasets: [{
+                label: 'Living Arrangement Distribution',
+                data: [60.38, 16.81, 14.08, 8.73],
+                backgroundColor: ['#F28F3B', '#00A6A6', '#E63946', '#A8DADC'],
+                borderColor: '#F1FAEE',
+                borderWidth: 4
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                ...tooltipTitleCallback.plugins,
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        font: {
+                            size: 14
+                        },
+                        color: '#1D3557'
+                    }
+                }
+            }
+        }
+    });
+
+    const membershipCtx = document.getElementById('membershipChart').getContext('2d');
+    new Chart(membershipCtx, {
+        type: 'bar',
+        data: {
+            labels: ['With Family', 'With Friends', 'Alone', 'Other/Minority'],
+            datasets: [
+                { label: 'Associates', data: [92.64, 4.91, 1.23, 1.23], backgroundColor: '#a8dadc' },
+                { label: 'Elders', data: [78.89, 4.52, 7.04, 9.55], backgroundColor: '#457b9d' },
+                { label: 'Freshers', data: [39.75, 18.63, 26.71, 14.91], backgroundColor: '#1d3557' },
+                { label: 'Infants', data: [100.0, 0, 0, 0], backgroundColor: '#f28f3b' },
+                { label: 'Old Timers', data: [45.8, 26.4, 18.2, 9.6], backgroundColor: '#00a6a6' },
+            ]
+        },
+        options: {
+            indexAxis: 'y',
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: { stacked: true, ticks: { callback: value => `${value}%` } },
+                y: { stacked: true }
+            },
+            plugins: {
+                ...tooltipTitleCallback.plugins,
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.dataset.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            if (context.parsed.x !== null) {
+                                label += context.parsed.x + '%';
+                            }
+                            return label;
+                        },
+                        title: function(tooltipItems) {
+                            return tooltipItems[0].label;
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    const sexCtx = document.getElementById('sexChart').getContext('2d');
+    new Chart(sexCtx, {
+        type: 'bar',
+        data: {
+            labels: ['With Family', 'With Friends', 'Alone', 'Other/Minority'],
+            datasets: [
+                {
+                    label: 'Female',
+                    data: [57.39, 14.2, 17.8, 10.61],
+                    backgroundColor: '#F28F3B',
+                    borderColor: '#ca6702',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Male',
+                    data: [63.48, 19.48, 10.49, 6.55],
+                    backgroundColor: '#00A6A6',
+                    borderColor: '#1d3557',
+                    borderWidth: 1
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+             scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        callback: function(value) {
+                            return value + '%';
+                        }
+                    }
+                }
+            },
+            plugins: {
+                ...tooltipTitleCallback.plugins,
+                tooltip: {
+                    callbacks: {
+                       label: function(context) {
+                            let label = context.dataset.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            if (context.parsed.y !== null) {
+                                label += context.parsed.y.toFixed(2) + '%';
+                            }
+                            return label;
+                        },
+                        title: function(tooltipItems) {
+                            return tooltipItems[0].label;
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    const ageCtx = document.getElementById('ageChart').getContext('2d');
+    new Chart(ageCtx, {
+        type: 'bar',
+        data: {
+            labels: ['With Family', 'With Friends', 'Alone', 'Other/Minority'],
+            datasets: [
+                { label: '0-5', data: [100.0, 0, 0, 0], backgroundColor: '#a8dadc' },
+                { label: '6-12', data: [98.99, 0, 1.01, 0], backgroundColor: '#457b9d' },
+                { label: '13-17', data: [68.48, 13.33, 10.3, 7.88], backgroundColor: '#1d3557' },
+                { label: '18-24', data: [35.12, 29.08, 23.71, 12.08], backgroundColor: '#00a6a6' },
+                { label: '25-29', data: [58.33, 21.67, 11.67, 8.33], backgroundColor: '#f28f3b' },
+                { label: '30-39', data: [70.43, 6.09, 13.91, 9.57], backgroundColor: '#e63946' },
+                { label: '40-49', data: [90.48, 0, 0, 9.52], backgroundColor: '#9b2226' },
+                { label: '50-59', data: [82.35, 8.82, 2.94, 5.88], backgroundColor: '#ee9b00' },
+                { label: '60+', data: [83.33, 0, 0, 16.67], backgroundColor: '#ca6702' }
+            ]
+        },
+        options: {
+            indexAxis: 'y',
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: { stacked: true, ticks: { callback: value => `${value}%` } },
+                y: { stacked: true }
+            },
+            plugins: {
+                ...tooltipTitleCallback.plugins,
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.dataset.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            if (context.parsed.x !== null) {
+                                label += context.parsed.x + '%';
+                            }
+                            return label;
+                        },
+                        title: function(tooltipItems) {
+                            return tooltipItems[0].label;
+                        }
+                    }
+                }
+            }
+        }
+    });
+});
+</script>
+</body>
+</html>
